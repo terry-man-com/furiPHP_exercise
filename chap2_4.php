@@ -1,6 +1,6 @@
 <?php
 var_dump("数字を入力してください");
-$num = trim(fgets(STDIN));
+$num = intval(trim(fgets(STDIN)));
 
 if(is_int($num)) {
     if($num % 2 == 0){
