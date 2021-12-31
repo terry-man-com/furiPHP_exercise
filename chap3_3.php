@@ -4,10 +4,10 @@ foreach (range(1, 100) as $int) {
     if ($int % 3 == 0 && $int % 5 == 0) {
         echo "FizzBuzz" . " ";
     } elseif ($int % 3 == 0) {
-        echo "Fizz" , " ";
+        echo "Fizz" .  " ";
     } elseif ($int % 5 == 0) {
-        echo "Buzz" , " ";
+        echo "Buzz" .  " ";
     } else {
-        echo $int , " ";
+        echo $int . " ";
     }
 }
