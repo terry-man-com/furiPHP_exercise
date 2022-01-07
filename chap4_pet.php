@@ -1,10 +1,11 @@
 <?php
-function display_msg($owner) {
+function display_msg($owner)
+{
     echo $owner["name"] . "さんは" . "\n";
 
     $animal_types = array_unique($owner["animal"]);
 
-    $animal = implode(",", $animal_types);
+    $animal = implode("、", $animal_types);
 
     $count = count($owner["animal"]);
 
@@ -13,11 +14,5 @@ function display_msg($owner) {
 {$animal}を
 {$count}匹飼っています。\n
 EOM;
-    echo ($msg);
+    echo $msg;
 }
-
-/*$animal_types = array_unique($owners["animal"]);
-
-$animal = implode($animal_types);
-
-$count = count($owners["animal"]);*/

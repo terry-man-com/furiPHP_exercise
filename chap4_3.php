@@ -8,6 +8,3 @@ $owners = [
 foreach ($owners as $owner) {
     display_msg($owner);
 }
-
-//display_msg("nakamura", "dog", 3);
-
