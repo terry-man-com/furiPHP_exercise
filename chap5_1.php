@@ -1,9 +1,11 @@
 <?php
-function h($str) {
+function h($str)
+{
     return htmlspecialchars($str, ENT_QUOTES, "UTF-8");
 }
-function constellation($month,$day) {
-    $signs = [  
+function constellation($month, $day)
+{
+    $signs = [
         ["name" => "牡羊座", "period_start" => [3, 21], "period_end" => [4, 19]],
         ["name" => "牡牛座", "period_start" => [4, 20], "period_end" => [5, 20]],
         ["name" => "双子座", "period_start" => [5, 21], "period_end" => [6, 21]],
@@ -17,44 +19,47 @@ function constellation($month,$day) {
         ["name" => "水瓶座", "period_start" => [1, 20], "period_end" => [2, 18]],
         ["name" => "魚座", "period_start" => [2, 19], "period_end" => [3, 20]]
     ];
-    foreach($signs as $sign) {
+    foreach ($signs as $sign) {
         $start_m = $sign["period_start"][0];
         $start_d = $sign["period_start"][1];
         $end_m = $sign["period_end"][0];
         $end_d = $sign["period_end"][1];
-        if($month == $start_m || $month == $end_m && $day >= $start_d || $day <= $end_d) {
+        if (($month == $start_m || $month == $end_m) && ($day >= $start_d || $day <= $end_d)) {
             return $sign["name"];
         }
     }
 }
 
-$month = filter_input(INPUT_GET,"month",FILTER_VALIDATE_INT);
+$month = filter_input(INPUT_GET, "month", FILTER_VALIDATE_INT);
 
-$day = filter_input(INPUT_GET,"day",FILTER_VALIDATE_INT);
+$day = filter_input(INPUT_GET, "day", FILTER_VALIDATE_INT);
 
-$sign = constellation($month,$day);
+$sign = constellation($month, $day);
 
 ?>
 
 <!DOCTYPE html>
 <html>
+
 <head>
     <meta charset="utf-8">
     <title>星座チェック</title>
 </head>
+
 <body>
     <h1>星座チェック</h1>
 </body>
+
 </html>
-<?php if(empty($month || $day)): ?>
-        <p>月日を入力してください</p>
-        <form method="get">
-            <label>月</label>:
-            <input type="number" name="month" min="1" max="12">
-            <label>日</label>
-            <input type="number" name="day" min="1" max="31">
-            <input type="submit" value="OK">
-        </form>
-        <?php else: ?>
-            <p><?= $month?>月<?= $day?>日生まれは<?= $sign?>です。</p>
-        <?php endif; ?>
+<?php if (empty($month || $day)) : ?>
+    <p>月日を入力してください</p>
+    <form method="get">
+        <label>月</label>:
+        <input type="number" name="month" min="1" max="12">
+        <label>日</label>
+        <input type="number" name="day" min="1" max="31">
+        <input type="submit" value="OK">
+    </form>
+<?php else : ?>
+    <p><?= $month ?>月<?= $day ?>日生まれは<?= $sign ?>です。</p>
+<?php endif; ?>
