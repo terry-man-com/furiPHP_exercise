@@ -9,29 +9,30 @@ EOM;
 
     echo $msg . "\n";
 
-    $number = trim(fgets(STDIN));
+    $num = trim(fgets(STDIN));
 
-    echo $number;
+    echo $num;
 
-    $attack = random_int(500, 3000);
 
-    $life = $hit_point - $attack;
-
-    $damage = <<<EOM
-攻撃力:{$attack}の攻撃!
-HP:{$life}
-EOM;
-
-    if (($number == 1 || $number == 2 || $number == 3) && $attack >= 2000 && $life > 0) {
-        echo "クリティカルヒット" . "\n";
-        echo $damage . "\n";
-    } elseif (($number == 1 || $number == 2 || $number == 3) && $life > 0) {
-        echo $damage . "\n";
-    } elseif ($life < 0) {
-        echo "敵を倒した!" . "\n";
+    if ($num == 1 || $num == 2 || $num == 3) {
+        $attack = random_int(500, 3000);
+        $life = $hit_point - $attack;
+        if($life < 0) {
+            $life = 0;
+        }
+        if($attack >= 2000) {
+            echo "クリティカルヒット" . "\n";
+        } 
+            echo "攻撃力" . $attack . "攻撃!" . "\n";
+            echo "HP:" . $life . "\n";
+        if($life == 0) {
+            echo "攻撃力" . $attack . "攻撃!" . "\n";
+            echo "HP:0" . "\n";
+            echo "敵を倒した" . "\n";
+        } 
     } else {
-        echo "攻撃に失敗" . "\n";
-    }
+        echo "攻撃に失敗!" . "\n";
+    } 
 
     $hit_point = $life;
 }

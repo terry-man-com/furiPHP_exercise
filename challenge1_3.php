@@ -10,6 +10,12 @@ $all_teams = [$team_a ,$team_b, $team_c];
     ["スライム", "ドラゴン", "魔王"]
 ];    */
 
-foreach($all_teams as $teams) {
+/*foreach($all_teams as $teams) {
     echo $teams[0] . "\n" . $teams[1] . "\n" . $teams[2] . "\n";
+};*/
+
+foreach($all_teams as $teams) {
+    foreach($teams as $team) {
+        echo $team . "\n";
+    };
 };
