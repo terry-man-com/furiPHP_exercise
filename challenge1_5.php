@@ -25,14 +25,11 @@ EOM;
         } 
             echo "攻撃力" . $attack . "攻撃!" . "\n";
             echo "HP:" . $life . "\n";
+            $hit_point = $life;
         if($life == 0) {
-            echo "攻撃力" . $attack . "攻撃!" . "\n";
-            echo "HP:0" . "\n";
             echo "敵を倒した" . "\n";
         } 
     } else {
         echo "攻撃に失敗!" . "\n";
     } 
-
-    $hit_point = $life;
 }
