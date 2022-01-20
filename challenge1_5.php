@@ -16,23 +16,22 @@ EOM;
     $attack = random_int(500, 3000);
 
     $life = $hit_point - $attack;
+
     $damage = <<<EOM
 攻撃力:{$attack}の攻撃!
 HP:{$life}
 EOM;
 
-    if (($number == 1 || $number == 2 || $number == 3) && $attack >= 2000) {
+    if (($number == 1 || $number == 2 || $number == 3) && $attack >= 2000 && $life > 0) {
         echo "クリティカルヒット" . "\n";
         echo $damage . "\n";
-    } elseif ($number == 1 || $number == 2 || $number == 3) {
+    } elseif (($number == 1 || $number == 2 || $number == 3) && $life > 0) {
         echo $damage . "\n";
+    } elseif ($life < 0) {
+        echo "敵を倒した!" . "\n";
     } else {
         echo "攻撃に失敗" . "\n";
     }
 
     $hit_point = $life;
-
-    if ($hit_point < 0) {
-        echo "敵を倒した!" . "\n";
-    }
 }
